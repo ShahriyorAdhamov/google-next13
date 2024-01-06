@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react'
 
 async function Web({searchParams}) {
@@ -7,12 +8,20 @@ async function Web({searchParams}) {
   );
   const data = await response.json();
   const results = data.items
+
+  if(!response.ok) {
+    throw new Error('Something went wrong')
+  }
   return (
     <>
       {
-        results && results.map(result => (
+        results? results.map(result => (
           <h1 key={result.cacheId}>{result.title}</h1>
-        ))
+        )): 
+        <div>
+          <h2>No results</h2>
+          <Link href={'/'}><button>home</button></Link>
+        </div>
       }    
     </>
   )
