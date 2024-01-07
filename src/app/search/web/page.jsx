@@ -1,3 +1,4 @@
+import WebSearchResults from '@/components/webSearchResults';
 import Link from 'next/link';
 import React from 'react'
 
@@ -15,12 +16,10 @@ async function Web({searchParams}) {
   return (
     <>
       {
-        results? results.map(result => (
-          <h1 key={result.cacheId}>{result.title}</h1>
-        )): 
+        results? <WebSearchResults results={data}/>: 
         <div>
           <h2>No results</h2>
-          <Link href={'/'}><button>home</button></Link>
+          <button><Link href={'/'}>home</Link></button>
         </div>
       }    
     </>
