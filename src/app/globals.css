@@ -2,5 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-
+@layer base {
+    .active {
+      @apply text-blue-400 bg-blue-100;
+    }
+  }
 
